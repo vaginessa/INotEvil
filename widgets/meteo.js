@@ -29,8 +29,29 @@ function addCity(){
     var city =  $("#meteo-city-search").val();
     $("#meteo-city-search").val("");
 
-    //TODO
+    $.getJSON("http://api.openweathermap.org/data/2.5/weather?appid=9b45f2f2f37d5dbbf9b99aefc602204f&lang=fr&units=metric&q="+city, function(result){
+        if(result.cod !== "undefined"
+            && result.cod == 200
+            && result.weather !== "undefined"
+            && result.weather.length > 0
+            && result.main !=="undefined"){
 
-    cities.push(city);
-    $("<li></li>").html(city).appendTo("#meteo-city-list");
+            var imageUrl = "http://openweathermap.org/img/w/" + result.weather[0].icon + ".png";
+            var temp = result.main.temp;
+
+
+            var li = $("<li></li>");
+
+            var ul = $("<ul></ul>");
+
+            $("<li></li>").text(city).appendTo(ul);
+            $("<li></li>").text(temp + "°C").appendTo(ul);
+            $("<img />").attr("src", imageUrl).appendTo("<li></li>").appendTo(ul);
+            ul.appendTo(li);
+            li.appendTo("#meteo-city-list");
+
+            cities.push(city);
+        }
+    });
+
 }
