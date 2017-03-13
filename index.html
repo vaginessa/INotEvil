@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title>INotEvil</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="widgets/date-time.js"></script>
+    <script src="widgets/clock.js"></script>
+    <script src="widgets/meteo.js"></script>
+    <script src="widgets/youtube.js"></script>
+    <script src="widgets/twitter.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -12,15 +15,19 @@
         });
 
         function update(){
-            dateTimeUpdate();
+            clockUpdate();
+            meteoUpdate();
+            youtubeUpdate();
+            twitterUpdate();
         }
     </script>
 
 
 </head>
 <body>
-    <div class="widget date-time"></div>
-
-
+    <div id="clock" class="widget"></div>
+    <div id="meteo" class="widget"></div>
+    <div id="youtube" class="widget"></div>
+    <div id="twitter" class="widget"></div>
 </body>
 </html>
