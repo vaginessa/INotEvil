@@ -1,3 +1,11 @@
 #logo {
     padding: 30px;
 }
+
+.widget {
+    border-radius: .25rem;
+    border: 2px solid;
+    padding: 5px;
+    text-align:center;
+    margin-bottom: 5px;
+}
