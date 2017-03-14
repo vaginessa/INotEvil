@@ -5,6 +5,6 @@
 function twitterUpdate() {
 
     $("#twitter").load("js/widget/layout/twitter.html");
-
+    
 }
 

@@ -7,20 +7,25 @@ function manage() {
     });
 
     $(".sortable").disableSelection();
+
     $(".panel-custom").resizable({
+        minHeight: 200,
+        maxHeight: 500,
         handles: 's, n',
         containment: "#widgets-container",
-        animate: true
-    });
+        resize: function(event, ui){
+            var currentHeight = ui.size.height;
 
-    //Empèche
-    $(".panel").ready(function () {
-        $(".panel").css("min-height", function () {
-            return $(this).height();
-        });
+            // this accounts for padding in the panels +
+            // borders, you could calculate this using jQuery
+            var padding = 80;
 
-        $(".panel").css("min-width", function () {
-            return $(this).width();
-        });
+            // this accounts for some lag in the ui.size value, if you take this away
+            // you'll get some instable behaviour
+            $(this).height(currentHeight);
+
+            // set the content panel width
+            $(this).children(".widget").height(currentHeight - padding);
+        }
     });
 }
