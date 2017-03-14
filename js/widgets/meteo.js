@@ -24,10 +24,7 @@ function addCity() {
 
 function loadCityInfos(city) {
 
-    var found = false;
-
     $.getJSON("http://api.openweathermap.org/data/2.5/weather?appid=9b45f2f2f37d5dbbf9b99aefc602204f&units=metric&q=" + city, function (result) {
-        console.log(result);
 
         if (result.cod !== "undefined"
             && result.cod == 200
