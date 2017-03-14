@@ -2,22 +2,12 @@
  * Created by sydpy on 3/13/17.
  */
 
-function twitterUpdate(){
+function twitterUpdate() {
 
     $("#twitter").empty();
 
-    var search = $("<input/>").attr("type","text").attr("id","twitter-feed-search");
-    var button = $("<button></button>").attr("type","button").attr("onclick", "twitterSearch();").text("Chercher");
 
-    var form = $("<form></form>").append(search).append(button);
 
-    form.appendTo("#twitter");
+    $("<a class=\"twitter-timeline\" href=\"https://twitter.com/iutInfoBdx\">Tweets by iutInfoBdx</a> <script async src=\"//platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>").appendTo("#twitter");
 }
 
-function videoSearch(){
-
-    var search = $("#twitter-feed-search").val();
-    $("#youtube-video-search").val("");
-
-    //TODO
-}
