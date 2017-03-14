@@ -4,7 +4,7 @@
 
 function youtubeUpdate(){
     $("#youtube").empty();
-    $("#youtube").load("widgets/layout/youtube.html");
+    $("#youtube").load("js/widgets/layout/youtube.html");
 }
 
 function newVideo(){

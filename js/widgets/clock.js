@@ -4,7 +4,7 @@
 
 function clockUpdate() {
 
-    $("#clock").load("widgets/layout/clock.html", function () {
+    $("#clock").load("js/widgets/layout/clock.html", function () {
         var today = new Date();
 
         var h = checkTime(today.getHours());
