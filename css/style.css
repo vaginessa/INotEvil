@@ -33,6 +33,11 @@ iframe {
     cursor: move;
 }
 
+#twitter {
+    overflow: auto;
+    max-height: 300px;
+}
+
 .default_spacing {
     margin-bottom: 10px;
 }
