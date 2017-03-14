@@ -4,18 +4,18 @@
 
 var cities = [];
 
-function meteoUpdate() {
+function weatherUpdate() {
 
-    $("#meteo").empty();
-    $("#meteo").load("js/widget/layout/meteo.html");
+    $("#weather").empty();
+    $("#weather").load("js/widget/layout/weather.html");
 
     loadCityInfos("Bordeaux");
 }
 
 function addCity() {
 
-    var city = $("#meteo-city-search").val();
-    $("#meteo-city-search").val("");
+    var city = $("#weather-city-search").val();
+    $("#weather-city-search").val("");
 
     loadCityInfos(city);
 }
@@ -37,7 +37,7 @@ function loadCityInfos(city) {
 
             var country = result.sys.country;
 
-            var item = $("<li></li>").load("js/widget/layout/meteo-item.html", function () {
+            var item = $("<li></li>").load("js/widget/layout/weather-item.html", function () {
                 $("#weather-icon").attr("id", "weather-icon" + cities.length).attr("src", imageUrl);
                 $("#city").attr("id", "city" + cities.length).text(city + ", " + country);
                 $("#temp").attr("id", "temp" + cities.length).text(temp + "°C");

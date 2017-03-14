@@ -19,7 +19,7 @@ iframe {
 }
 
 .col_custom{
-    /* Columns with same height */
+    /* Columns with same height hack */
     margin-bottom: -99999px;
     padding-bottom: 99999px;
 }
@@ -34,10 +34,31 @@ iframe {
 }
 
 #twitter {
-    overflow: auto;
     max-height: 300px;
+    overflow: auto;
+}
+
+#twitter-container {
+    width: 100%;
+    height: 100%;
 }
 
 .default_spacing {
     margin-bottom: 10px;
 }
+
+/* animation resize */
+.ui-resizable-helper {
+    border: 1px dotted gray;
+    background-color: cornflowerblue;
+    opacity: 0.2;
+}
+
+/* placeholder while moving the widget */
+.ui-sortable-placeholder {
+    background: cornflowerblue !important;
+    border: 2px solid midnightblue !important;
+    visibility: visible !important;
+    height: 100px !important;
+}
+.ui-sortable-placeholder * { visibility: hidden; }
