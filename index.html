@@ -2,33 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>INotEvil</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="widgets/clock.js"></script>
-    <script src="widgets/meteo.js"></script>
-    <script src="widgets/youtube.js"></script>
-    <script src="widgets/twitter.js"></script>
+    <title>iNotEvil</title>
 
-    <script>
-        $(document).ready(function(){
-            update();
-        });
-
-        function update(){
-            clockUpdate();
-            meteoUpdate();
-            youtubeUpdate();
-            twitterUpdate();
-        }
-    </script>
-
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-        <!-- custom stylesheet -->
-        <link rel="stylesheet" href="css/style.css">
+    <!-- custom stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
     <body>
@@ -50,20 +27,71 @@
                 </form>
             </div>
 
-            <div class="row">
-                <div class="col-lg-4">
-                    <div id="clock" class="widget"></div>
-                    <div id="twitter" class="widget"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title text-center">Widgets</h1>
                 </div>
-                <div class="col-lg-4">
-                    <div id="meteo" class="widget"></div>
-                </div>
-                <div class="col-lg-4">
-                    <div id="youtube" class="widget"></div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-4 sortable col_custom">
+
+                            <div class="panel panel-primary panel-custom">
+                                <div class="panel-heading unsortable">Clock</div>
+                                <div id="clock" class="widget panel-body unsortable"></div>
+                            </div>
+
+                            <div class="panel panel-primary panel-custom">
+                                <div class="panel-heading unsortable">Twitter</div>
+                                <div id="twitter" class="widget panel-body unsortable"></div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 sortable col_custom">
+                            <div class="panel panel-primary panel-custom">
+                                <div class="panel-heading unsortable">Weather</div>
+                                <div id="meteo" class="widget panel-body unsortable"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 sortable col_custom">
+                            <div class="panel panel-primary panel-custom">
+                                <div class="panel-heading unsortable">Youtube</div>
+                                <div id="youtube" class="widget panel-body unsortable"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <!-- custom js -->
+        <script src="widgets/clock.js"></script>
+        <script src="widgets/meteo.js"></script>
+        <script src="widgets/youtube.js"></script>
+        <script src="widgets/twitter.js"></script>
+        <script src="widgets_manager.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                update();
+            });
+
+            function update(){
+                clockUpdate();
+                meteoUpdate();
+                youtubeUpdate();
+                twitterUpdate();
+            }
+        </script>
     </body>
 </html>

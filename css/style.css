@@ -4,8 +4,27 @@
 
 .widget {
     border-radius: .25rem;
-    border: 2px solid;
     padding: 5px;
     text-align:center;
     margin-bottom: 5px;
+}
+
+iframe {
+    display:block;
+    width:100%;
+}
+
+.row{
+    overflow: hidden;
+}
+
+.col_custom{
+    /* Columns with same height */
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+.sortable {
+    /* Yes this is absolutly weird but it fixes my bug (see : http://stackoverflow.com/questions/29018135/strange-behaviour-when-dragging-sortable-bootstrap-panels-with-jquery-ui ) */
+    border-top: 1px solid transparent;
 }
