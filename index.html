@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>INotEvil</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="widgets/clock.js"></script>
-    <script src="widgets/meteo.js"></script>
-    <script src="widgets/youtube.js"></script>
-    <script src="widgets/twitter.js"></script>
+    <script src="js/widgets/clock.js"></script>
+    <script src="js/widgets/meteo.js"></script>
+    <script src="js/widgets/youtube.js"></script>
+    <script src="js/widgets/twitter.js"></script>
+    <script src="js/widgets/pics.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -19,6 +20,7 @@
             meteoUpdate();
             youtubeUpdate();
             twitterUpdate();
+            picsUpdate();
         }
     </script>
 
@@ -52,14 +54,15 @@
 
             <div class="row">
                 <div class="col-lg-4">
-                    <div id="clock" class="widget"></div>
-                    <div id="twitter" class="widget"></div>
+                    <div id="pics" class="widget"></div>
+                    <!--<div id="clock" class="widget"></div>-->
+                    <!--<div id="twitter" class="widget"></div>-->
                 </div>
                 <div class="col-lg-4">
-                    <div id="meteo" class="widget"></div>
+                    <!--<div id="meteo" class="widget"></div>-->
                 </div>
                 <div class="col-lg-4">
-                    <div id="youtube" class="widget"></div>
+                    <!--<div id="youtube" class="widget"></div>-->
                 </div>
             </div>
         </div>
