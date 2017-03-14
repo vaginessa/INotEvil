@@ -28,3 +28,16 @@ iframe {
     /* Yes this is absolutly weird but it fixes my bug (see : http://stackoverflow.com/questions/29018135/strange-behaviour-when-dragging-sortable-bootstrap-panels-with-jquery-ui ) */
     border-top: 1px solid transparent;
 }
+
+.col_custom > .panel {
+    cursor: move;
+}
+
+#twitter {
+    overflow: auto;
+    max-height: 300px;
+}
+
+.default_spacing {
+    margin-bottom: 10px;
+}
