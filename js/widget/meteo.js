@@ -7,11 +7,9 @@ var cities = [];
 function meteoUpdate() {
 
     $("#meteo").empty();
-    $("#meteo").load("js/widgets/layout/meteo.html");
+    $("#meteo").load("js/widget/layout/meteo.html");
 
-    cities.forEach(function (c) {
-        loadCityInfos(c);
-    });
+    loadCityInfos("Bordeaux");
 }
 
 function addCity() {
@@ -39,7 +37,7 @@ function loadCityInfos(city) {
 
             var country = result.sys.country;
 
-            var item = $("<li></li>").load("js/widgets/layout/meteo-item.html", function () {
+            var item = $("<li></li>").load("js/widget/layout/meteo-item.html", function () {
                 $("#weather-icon").attr("id", "weather-icon" + cities.length).attr("src", imageUrl);
                 $("#city").attr("id", "city" + cities.length).text(city + ", " + country);
                 $("#temp").attr("id", "temp" + cities.length).text(temp + "°C");

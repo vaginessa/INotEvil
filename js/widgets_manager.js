@@ -1,5 +1,5 @@
 $(".sortable").sortable({
-    items: 'div:not(.unsortable)',
+    items: '.panel:not(.unsortable)',
     revert: true,
     dropOnEmpty: true,
     connectWith: "div.col_custom"

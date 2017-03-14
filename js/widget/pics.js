@@ -5,7 +5,7 @@
 function picsUpdate() {
 
     $("#pics").empty();
-    $("#pics").load("js/widgets/layout/pics.html");
+    $("#pics").load("js/widget/layout/pics.html");
 }
 
 function newPic() {
