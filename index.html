@@ -52,6 +52,11 @@
                                 <div class="panel-heading unsortable">Weather</div>
                                 <div id="meteo" class="widget panel-body unsortable"></div>
                             </div>
+
+                            <div class="panel panel-primary panel-custom">
+                                <div class="panel-heading unsortable">Flickr</div>
+                                <div id="pics" class="widget panel-body unsortable"></div>
+                            </div>
                         </div>
                         <div class="col-lg-4 sortable col_custom">
                             <div class="panel panel-primary panel-custom">
@@ -65,6 +70,7 @@
         </div>
 
 
+        <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -80,6 +86,7 @@
         <script src="widgets/youtube.js"></script>
         <script src="widgets/twitter.js"></script>
         <script src="widgets_manager.js"></script>
+        <script src="js/widgets/pics.js"></script>
 
         <script>
             $(document).ready(function(){
@@ -91,6 +98,7 @@
                 meteoUpdate();
                 youtubeUpdate();
                 twitterUpdate();
+                picsUpdate();
             }
         </script>
     </body>
