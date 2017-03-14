@@ -4,54 +4,51 @@
 
 var cities = [];
 
-function meteoUpdate(){
+function meteoUpdate() {
 
     $("#meteo").empty();
+    $("#meteo").load("widgets/layout/meteo.html");
 
-    var search = $("<input/>").attr("type","text").attr("id","meteo-city-search");
-    var button = $("<button></button>").attr("type","button").attr("onclick", "addCity();").text("Ajouter");
-
-    var form = $("<form></form>").append(search).append(button);
-
-    form.appendTo("#meteo");
-
-    var ul = $("<ul></ul>").attr("id","meteo-city-list");
-
-    cities.forEach(function(c){
-        $("<li></li>").html(c).appendTo(ul);
+    cities.forEach(function (c) {
+        loadCityInfos(c);
     });
-
-    ul.appendTo("#meteo");
 }
 
-function addCity(){
+function addCity() {
 
-    var city =  $("#meteo-city-search").val();
+    var city = $("#meteo-city-search").val();
     $("#meteo-city-search").val("");
 
-    $.getJSON("http://api.openweathermap.org/data/2.5/weather?appid=9b45f2f2f37d5dbbf9b99aefc602204f&lang=fr&units=metric&q="+city, function(result){
-        if(result.cod !== "undefined"
+    loadCityInfos(city);
+}
+
+function loadCityInfos(city) {
+
+    var found = false;
+
+    $.getJSON("http://api.openweathermap.org/data/2.5/weather?appid=9b45f2f2f37d5dbbf9b99aefc602204f&units=metric&q=" + city, function (result) {
+        console.log(result);
+
+        if (result.cod !== "undefined"
             && result.cod == 200
             && result.weather !== "undefined"
             && result.weather.length > 0
-            && result.main !=="undefined"){
+            && result.main !== "undefined") {
+
+            cities.push(city);
 
             var imageUrl = "http://openweathermap.org/img/w/" + result.weather[0].icon + ".png";
             var temp = result.main.temp;
 
+            var country = result.sys.country;
 
-            var li = $("<li></li>");
+            var item = $("<li></li>").load("widgets/layout/meteo-item.html", function () {
+                $("#weather-icon").attr("id", "weather-icon" + cities.length).attr("src", imageUrl);
+                $("#city").attr("id", "city" + cities.length).text(city + ", " + country);
+                $("#temp").attr("id", "temp" + cities.length).text(temp + "°C");
+            }).attr("class", "list-group-item");
 
-            var ul = $("<ul></ul>");
-
-            $("<li></li>").text(city).appendTo(ul);
-            $("<li></li>").text(temp + "°C").appendTo(ul);
-            $("<img />").attr("src", imageUrl).appendTo("<li></li>").appendTo(ul);
-            ul.appendTo(li);
-            li.appendTo("#meteo-city-list");
-
-            cities.push(city);
+            item.appendTo("#city-list");
         }
     });
-
 }

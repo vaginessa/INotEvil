@@ -4,10 +4,7 @@
 
 function twitterUpdate() {
 
-    $("#twitter").empty();
+    $("#twitter").load("widgets/layout/twitter.html");
 
-
-
-    $("<a class=\"twitter-timeline\" href=\"https://twitter.com/iutInfoBdx\">Tweets by iutInfoBdx</a> <script async src=\"//platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>").appendTo("#twitter");
 }
 

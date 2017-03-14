@@ -2,22 +2,23 @@
  * Created by sydpy on 3/13/17.
  */
 
-function clockUpdate(){
+function clockUpdate() {
 
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    m = checkTime(m);
-    s = checkTime(s);
-    var t = setTimeout(clockUpdate, 1000);
+    $("#clock").load("widgets/layout/clock.html", function () {
+        var today = new Date();
 
-    $("#clock").empty();
+        var h = checkTime(today.getHours());
+        var m = checkTime(today.getMinutes());
+        var s = checkTime(today.getSeconds());
 
-    $("<h1></h1>").text(h + ":" + m + ":" + s).appendTo("#clock");
-    $("<p></p>").text(today.toDateString()).appendTo("#clock");
+        $("#time").text(h + ":" + m + ":" + s);
+        $("#date").text(today.toDateString());
+    });
+
+    setTimeout(clockUpdate, 1000);
 }
+
 function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    if (i < 10) {i = "0" + i};
     return i;
 }
