@@ -29,3 +29,13 @@ function manage() {
         }
     });
 }
+
+function update(){
+    clockUpdate();
+    weatherUpdate();
+    youtubeUpdate();
+    twitterUpdate();
+    picsUpdate();
+    mapsUpdate();
+    manage();
+}
