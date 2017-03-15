@@ -5,7 +5,7 @@
 .widget {
     border-radius: .25rem;
     padding: 5px;
-    text-align:center;
+    text-align: center;
     margin-bottom: 5px;
     overflow: auto;
     max-height: 450px;
@@ -13,15 +13,15 @@
 }
 
 iframe {
-    display:block;
-    width:100%;
+    display: block;
+    width: 100%;
 }
 
-.row{
+.row {
     overflow: hidden;
 }
 
-.col_custom{
+.col_custom {
     /* Columns with same height hack */
     margin-bottom: -99999px;
     padding-bottom: 99999px;
@@ -55,4 +55,15 @@ iframe {
     visibility: visible !important;
     height: 100px !important;
 }
-.ui-sortable-placeholder * { visibility: hidden; }
+
+.ui-sortable-placeholder * {
+    visibility: hidden;
+}
+
+#maps {
+    height: 300px;
+}
+
+#map {
+    height: 100%;
+}

@@ -13,7 +13,7 @@ function manage() {
         maxHeight: 500,
         handles: 's, n',
         containment: "#widgets-container",
-        resize: function(event, ui){
+        resize: function (event, ui) {
             var currentHeight = ui.size.height;
 
             // this accounts for padding in the panels +
@@ -30,12 +30,15 @@ function manage() {
     });
 }
 
-function update(){
+function update() {
     clockUpdate();
     weatherUpdate();
     youtubeUpdate();
     twitterUpdate();
     picsUpdate();
-    mapsUpdate();
     manage();
+
+    try {
+        mapsUpdate();
+    } catch (err) {}
 }
