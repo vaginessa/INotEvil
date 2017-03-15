@@ -8,110 +8,115 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-<img src="img/logo.png" alt="logo" class="img-responsive center-block" id="logo"/>
+    <body>
+        <img src="img/logo.png" alt="logo" class="img-responsive center-block" id="logo" />
 
-<div class="container">
+        <div class="container">
 
-    <div class="row">
-        <form class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-12 form-group" method="GET"
-              action="https://duckduckgo.com">
-            <label for="search_bar">Search on the quantum web :</label>
-
-            <div class="input-group">
-                <input type="text" class="form-control" id="search_bar" name="q"
-                       placeholder="Search quantum things... (Ex: funny cat video who falls into lava)">
-
-                <span class="input-group-btn">
-                            <button class="btn btn-danger" type="submit"><i
-                                    class="glyphicon glyphicon-search"></i></button>
-                        </span>
-            </div>
-        </form>
-    </div>
-
-    <div class="panel panel-default" id="widgets-container">
-        <div class="panel-heading">
-            <h1 class="panel-title text-center">Widgets</h1>
-        </div>
-
-        <div class="panel-body">
             <div class="row">
-                <div class="col-lg-4 sortable col_custom">
+                <form class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-12 form-group" method="GET" action="https://duckduckgo.com">
+                    <label for="search_bar">Search on the quantum web :</label>
 
-                    <div class="panel panel-primary panel-custom">
-                        <div class="panel-heading unsortable">Clock</div>
-                        <div id="clock" class="widget panel-body unsortable"></div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="search_bar" name="q" placeholder="Search quantum things... (Ex: funny cat video who falls into lava)">
+
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </span>
                     </div>
+                </form>
+            </div>
 
-
-                    <div class="panel panel-primary panel-custom">
-                        <div class="panel-heading unsortable">Maps</div>
-                        <div id="maps" class="widget panel-body unsortable"></div>
-                    </div>
-
-                    <div class="panel panel-primary panel-custom">
-                        <div class="panel-heading unsortable">Youtube</div>
-                        <div id="youtube" class="widget panel-body unsortable"></div>
-                    </div>
-
+            <div class="panel panel-default" id="widgets-container">
+                <div class="panel-heading">
+                    <h1 class="panel-title text-center">Widgets</h1>
                 </div>
-                <div class="col-lg-4 sortable col_custom">
-                    <div class="panel panel-primary panel-custom">
-                        <div class="panel-heading unsortable">Weather</div>
-                        <div id="weather" class="widget panel-body unsortable"></div>
-                    </div>
 
-                    <div class="panel panel-primary panel-custom">
-                        <div class="panel-heading unsortable">Flickr</div>
-                        <div id="pics" class="widget panel-body unsortable"></div>
-                    </div>
-                </div>
-                <div class="col-lg-4 sortable col_custom">
-                    <div class="panel panel-primary panel-custom">
-                        <div class="panel-heading unsortable">Twitter</div>
-                        <div id="twitter" class="widget panel-body unsortable"></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-4 sortable col_custom">
+
+                            <div class="panel panel-primary panel-custom">
+                                <div class="panel-heading unsortable">Clock</div>
+                                <div id="clock" class="widget panel-body unsortable"></div>
+                            </div>
+
+
+                            <div class="panel panel-primary panel-custom">
+                                <div class="panel-heading unsortable">Maps</div>
+                                <div id="maps" class="widget panel-body unsortable"></div>
+                            </div>
+
+                            <div class="panel panel-primary panel-custom">
+                                <div class="panel-heading unsortable">Youtube</div>
+                                <div id="youtube" class="widget panel-body unsortable"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 sortable col_custom">
+                            <div class="panel panel-primary panel-custom">
+                                <div class="panel-heading unsortable">Weather</div>
+                                <div id="weather" class="widget panel-body unsortable"></div>
+                            </div>
+
+                            <div class="panel panel-primary panel-custom">
+                                <div class="panel-heading unsortable">Flickr</div>
+                                <div id="pics" class="widget panel-body unsortable"></div>
+                            </div>
+
+                            <div class="panel panel-primary panel-custom">
+                                <div class="panel-heading unsortable">Football</div>
+                                <div id="football" class="widget panel-body unsortable"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 sortable col_custom">
+                            <div class="panel panel-primary panel-custom">
+                                <div class="panel-heading unsortable">Twitter</div>
+                                <div id="twitter" class="widget panel-body unsortable"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
 
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
-<!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+              integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossorigin="anonymous"></script>
 
-<!--external libs-->
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn1D5NzOcdVR1r4PBqLYKJh5Gb6zdb9DA&callback=mapsUpdate">
-</script>
+        <!--external libs-->
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn1D5NzOcdVR1r4PBqLYKJh5Gb6zdb9DA&callback=mapsUpdate">
+        </script>
 
-<!-- custom js -->
-<script src="js/widget/clock.js"></script>
-<script src="js/widget/weather.js"></script>
-<script src="js/widget/youtube.js"></script>
-<script src="js/widget/twitter.js"></script>
-<script src="js/widget/pics.js"></script>
-<script src="js/widget/maps.js"></script>
-<script src="js/widgets_manager.js"></script>
+        <!-- input text dropdown library -->
+        <script src="js/bootstrap3-typeahead.min.js"></script>
 
-<script>
-    $(document).ready(function () {
-        update();
-    });
+        <!-- custom js -->
+        <script src="js/widget/clock.js"></script>
+        <script src="js/widget/weather.js"></script>
+        <script src="js/widget/youtube.js"></script>
+        <script src="js/widget/twitter.js"></script>
+        <script src="js/widget/pics.js"></script>
+        <script src="js/widget/maps.js"></script>
+        <script src="js/widget/football.js"></script>
+        <script src="js/widgets_manager.js"></script>
 
-</script>
+        <script>
+            $(document).ready(function () {
+                update();
+            });
+
+        </script>
 </body>
 </html>

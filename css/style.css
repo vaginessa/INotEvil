@@ -1,3 +1,7 @@
+/**
+ * Created by shellcode on 3/14/17.
+ */
+
 #logo {
     padding: 30px;
 }
@@ -67,3 +71,6 @@ iframe {
 #map {
     height: 100%;
 }
+
+/* the 'dropdown' effect for suggestions fits the input width */
+.twitter-typeahead, .tt-hint, .tt-input, .tt-menu, .dropdown-menu { width: 100%; }

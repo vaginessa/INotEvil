@@ -1,3 +1,7 @@
+/**
+ * Created by shellcode on 3/14/17.
+ */
+
 function manage() {
     $(".sortable").sortable({
         items: '.panel:not(.unsortable)',
@@ -35,6 +39,7 @@ function update() {
     weatherUpdate();
     youtubeUpdate();
     twitterUpdate();
+    footballUpdate();
     picsUpdate();
     manage();
 
