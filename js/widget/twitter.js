@@ -4,7 +4,9 @@
 
 function twitterUpdate() {
 
-    $("#twitter").load("js/widget/layout/twitter.html");
-    
+    reload_twitter();
 }
 
+function reload_twitter() {
+    $("#twitter").load("js/widget/layout/twitter.html");
+}

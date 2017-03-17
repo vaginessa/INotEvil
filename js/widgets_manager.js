@@ -3,11 +3,23 @@
  */
 
 function manage() {
+
+    update();
+
     $(".sortable").sortable({
         items: '.panel:not(.unsortable)',
         revert: true,
         dropOnEmpty: true,
-        connectWith: "div.col_custom"
+        connectWith: "div.col_custom",
+        stop: function(event, ui) {
+            var twitter = ui.item.children("#twitter");
+
+            //Si twitter a été trouvé, c'est qu'il a été drag&drop et donc on le reload (pour fix le bug de la page blanche)
+            if(twitter.length > 0) {
+                console.log("Reload twitter");
+                reload_twitter();
+            }
+        }
     });
 
     $(".sortable").disableSelection();
@@ -41,9 +53,4 @@ function update() {
     twitterUpdate();
     footballUpdate();
     picsUpdate();
-    manage();
-
-    try {
-        mapsUpdate();
-    } catch (err) {}
 }

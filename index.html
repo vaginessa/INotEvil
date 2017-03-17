@@ -59,11 +59,6 @@
                             </div>
 
                             <div class="panel panel-primary panel-custom">
-                                <div class="panel-heading unsortable">Flickr</div>
-                                <div id="pics" class="widget panel-body unsortable"></div>
-                            </div>
-
-                            <div class="panel panel-primary panel-custom">
                                 <div class="panel-heading unsortable">Football</div>
                                 <div id="football" class="widget panel-body unsortable"></div>
                             </div>
@@ -72,6 +67,11 @@
                             <div class="panel panel-primary panel-custom">
                                 <div class="panel-heading unsortable">Twitter</div>
                                 <div id="twitter" class="widget panel-body unsortable"></div>
+                            </div>
+
+                            <div class="panel panel-primary panel-custom">
+                                <div class="panel-heading unsortable">Flickr</div>
+                                <div id="pics" class="widget panel-body unsortable"></div>
                             </div>
                         </div>
                     </div>
@@ -94,11 +94,6 @@
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
                 crossorigin="anonymous"></script>
 
-        <!--external libs-->
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn1D5NzOcdVR1r4PBqLYKJh5Gb6zdb9DA&callback=mapsUpdate">
-        </script>
-
         <!-- input text dropdown library -->
         <script src="js/bootstrap3-typeahead.min.js"></script>
 
@@ -112,9 +107,14 @@
         <script src="js/widget/football.js"></script>
         <script src="js/widgets_manager.js"></script>
 
+        <!--google maps-->
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn1D5NzOcdVR1r4PBqLYKJh5Gb6zdb9DA&callback=mapsUpdate">
+        </script>
+
         <script>
             $(document).ready(function () {
-                update();
+                manage();
             });
 
         </script>
