@@ -27,52 +27,35 @@
                 </form>
             </div>
 
-            <div class="panel panel-default" id="widgets-container">
+            <div class="row">
+                <div class="col-lg-offset-3 col-lg-6 col-sm-12" id="dock-widgets">
+                    <img src="img/widgets/clock.jpg" alt="clock" class="widget-create" onclick="addWidget(Widgets.CLOCK);">
+                    <img src="img/widgets/youtube.png" alt="youtube" class="widget-create" onclick="addWidget(Widgets.YOUTUBE);">
+                    <img src="img/widgets/twitter.png" alt="twitter" class="widget-create" onclick="addWidget(Widgets.TWITTER);">
+                    <img src="img/widgets/maps.png" alt="maps" class="widget-create" onclick="addWidget(Widgets.MAPS);">
+                    <img src="img/widgets/weather.png" alt="weather" class="widget-create" onclick="addWidget(Widgets.WEATHER);">
+                    <img src="img/widgets/football.png" alt="football" class="widget-create" onclick="addWidget(Widgets.FOOTBALL);">
+                    <img src="img/widgets/flickr.png" alt="flickr" class="widget-create" onclick="addWidget(Widgets.FLICKR);">
+                </div>
+            </div>
+
+            <div class="row panel panel-default" id="widgets-container">
                 <div class="panel-heading">
                     <h1 class="panel-title text-center">Widgets</h1>
                 </div>
 
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-4 sortable col_custom">
+                        <div class="col-lg-4 sortable col_custom" id="column1">
 
-                            <div class="panel panel-primary panel-custom">
-                                <div class="panel-heading unsortable">Clock</div>
-                                <div id="clock" class="widget panel-body unsortable"></div>
-                            </div>
-
-
-                            <div class="panel panel-primary panel-custom">
-                                <div class="panel-heading unsortable">Maps</div>
-                                <div id="maps" class="widget panel-body unsortable"></div>
-                            </div>
-
-                            <div class="panel panel-primary panel-custom">
-                                <div class="panel-heading unsortable">Youtube</div>
-                                <div id="youtube" class="widget panel-body unsortable"></div>
-                            </div>
                         </div>
-                        <div class="col-lg-4 sortable col_custom">
-                            <div class="panel panel-primary panel-custom">
-                                <div class="panel-heading unsortable">Weather</div>
-                                <div id="weather" class="widget panel-body unsortable"></div>
-                            </div>
 
-                            <div class="panel panel-primary panel-custom">
-                                <div class="panel-heading unsortable">Football</div>
-                                <div id="football" class="widget panel-body unsortable"></div>
-                            </div>
+                        <div class="col-lg-4 sortable col_custom" id="column2">
+
                         </div>
-                        <div class="col-lg-4 sortable col_custom">
-                            <div class="panel panel-primary panel-custom">
-                                <div class="panel-heading unsortable">Twitter</div>
-                                <div id="twitter" class="widget panel-body unsortable"></div>
-                            </div>
 
-                            <div class="panel panel-primary panel-custom">
-                                <div class="panel-heading unsortable">Flickr</div>
-                                <div id="pics" class="widget panel-body unsortable"></div>
-                            </div>
+                        <div class="col-lg-4 sortable col_custom" id="column3">
+
                         </div>
                     </div>
                 </div>
@@ -106,11 +89,6 @@
         <script src="js/widget/maps.js"></script>
         <script src="js/widget/football.js"></script>
         <script src="js/widgets_manager.js"></script>
-
-        <!--google maps-->
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn1D5NzOcdVR1r4PBqLYKJh5Gb6zdb9DA&callback=mapsUpdate">
-        </script>
 
         <script>
             $(document).ready(function () {
