@@ -12,10 +12,6 @@ Widgets = {
     MAPS : 6
 };
 
-//int array qui contient le nombre de widget qu'il y a sur chaque colonne pour que lors de l'ajout d'un nouveau widget,
-//celui-ci soit ajouté à la colonne avec le moins de widgets
-var widgets_count_per_column = [0, 0, 0];
-
 function manage() {
 
     $(".sortable").sortable({
@@ -60,20 +56,22 @@ function manage() {
 
 function addWidget(widgetType) {
 
-    var column_destination = 0;
+    var column_destination = 1; //colonnes 1, 2, ou 3
+
+    console.log("" + $("#column1").children().length + " " + $("#column2").children().length + " " + $("#column3").children().length);
 
     //On prend la colonne avec le moins de widgets
-    $.each(widgets_count_per_column, function(i, val) {
-        if(val < widgets_count_per_column[column_destination])
-            column_destination = i;
-    });
+    if($("#column1").children().length > $("#column2").children().length)
+        column_destination = 2;
 
+    if($("#column" + column_destination).children().length > $("#column3").children().length)
+        column_destination = 3;
 
-    var panel_widget = $("<div></div>").attr("class", "panel panel-primary panel-custom")
-                                                            .append('<div class="panel-heading unsortable"></div>')
-                                                            .append('<div class="widget panel-body unsortable"></div>');
+    var panel_widget = $("<div></div>") .attr("class", "panel panel-primary panel-custom")
+                                        .append('<div class="panel-heading unsortable"></div>')
+                                        .append('<div class="widget panel-body unsortable"></div>');
 
-    $("#column" + (column_destination+1)).append(panel_widget);
+    $("#column" + column_destination).append(panel_widget);
 
     switch (widgetType) {
         case Widgets.CLOCK:
@@ -117,7 +115,4 @@ function addWidget(widgetType) {
             panel_widget.children(".widget").attr("id", "maps").append('<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn1D5NzOcdVR1r4PBqLYKJh5Gb6zdb9DA&callback=mapsUpdate"></script>');
             break;
     }
-
-    //On met à jour le tableau du nombre de widgets par colonne
-    widgets_count_per_column[column_destination]++;
 }
