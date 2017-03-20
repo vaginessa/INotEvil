@@ -8,7 +8,7 @@ var geocoder;
 function mapsUpdate() {
     $("#maps").load("js/widget/layout/maps.html", function () {
         geocoder = new google.maps.Geocoder();
-        google.maps.event.addDomListener(window, 'load', initialize);
+        initialize();
     });
 }
 
@@ -18,7 +18,7 @@ function initialize() {
     var mapOptions = {
         zoom: 10,
         center: gradignus
-    }
+    };
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }
 
