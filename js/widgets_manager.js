@@ -31,12 +31,13 @@ function manage() {
         dropOnEmpty: true,
         connectWith: "div.col_custom",
         stop: function (event, ui) {
-            var twitter = ui.item.children("#twitter");
+            var twitter = ui.item.children("[id^=twitter]");
 
             //Si twitter a été trouvé, c'est qu'il a été drag&drop et donc on le reload (pour fix le bug de la page blanche)
             if (twitter.length > 0) {
-                console.log("Reload twitter");
-                reload_twitter();
+                var id = twitter.attr("id").match(/\d+$/); //get widget id from div id
+                console.log("Reload twitter" + id);
+                reload_twitter(id);
             }
         }
     });
