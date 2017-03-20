@@ -55,8 +55,11 @@ iframe {
 }
 
 .col_custom > .panel {
-    cursor: move;
     min-height: 200px;
+}
+
+.col_custom .panel-heading {
+    cursor: move;
 }
 
 .default_spacing {
