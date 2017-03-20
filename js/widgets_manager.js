@@ -50,10 +50,10 @@ function addWidget(widgetType) {
     var column_destination = 1; //colonnes 1, 2, ou 3
 
     //On prend la colonne avec le moins de widgets
-    if ($("#column1").children().length > $("#column2").children().length)
+    if ($("#column1").find(".panel").length > $("#column2").find(".panel").length)
         column_destination = 2;
 
-    if ($("#column" + column_destination).children().length > $("#column3").children().length)
+    if ($("#column" + column_destination).find(".panel").length > $("#column3").find(".panel").length)
         column_destination = 3;
 
     var panel_widget = $("<div></div>").load("js/widget/layout/panel_widget.html", function () {
