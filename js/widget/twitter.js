@@ -2,11 +2,10 @@
  * Created by sydpy on 3/13/17.
  */
 
-function twitterUpdate() {
-
-    reload_twitter();
+function twitterUpdate(id) {
+    reload_twitter(id);
 }
 
-function reload_twitter() {
-    $("#twitter").load("js/widget/layout/twitter.html");
+function reload_twitter(id) {
+    $("#twitter" + id).load("js/widget/layout/twitter.html");
 }
