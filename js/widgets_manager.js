@@ -58,27 +58,6 @@ function addWidget(widgetType) {
 
     var panel_widget = $("<div></div>").load("js/widget/layout/panel_widget.html", function () {
 
-        $(this).resizable({
-            minHeight: 200,
-            maxHeight: 500,
-            handles: 's',
-            containment: "#widgets-container",
-            resize: function (event, ui) {
-                var currentHeight = ui.size.height;
-
-                // this accounts for padding in the panels +
-                // borders, you could calculate this using jQuery
-                var padding = 80;
-
-                // this accounts for some lag in the ui.size value, if you take this away
-                // you'll get some instable behaviour
-                $(this).height(currentHeight);
-
-                // set the content panel width
-                $(this).find(".widget").height(currentHeight - padding);
-            }
-        });
-
         switch (widgetType) {
 
             case Widgets.CLOCK:
@@ -139,12 +118,32 @@ function addWidget(widgetType) {
 
         }
         $(this).find(".remove").attr("onclick", 'removeWidget("' + $(this).find(".widget").attr("id") + '");');
+        $(this).resizable({
+            minHeight: 200,
+            maxHeight: 500,
+            handles: 's',
+            containment: "#widgets-container",
+            resize: function (event, ui) {
+                var currentHeight = ui.size.height;
+
+                // this accounts for padding in the panels +
+                // borders, you could calculate this using jQuery
+                var padding = 80;
+
+                // this accounts for some lag in the ui.size value, if you take this away
+                // you'll get some instable behaviour
+                $(this).height(currentHeight);
+
+                // set the content panel width
+                $(this).find(".widget").height(currentHeight - padding);
+            }
+        })
     });
 
-    $("#column" + column_destination).append(panel_widget);
+    panel_widget.appendTo("#column" + column_destination);
 }
 
 function removeWidget(id) {
-    $("#" + id).parentsUntil(".ui-resizable").remove();
+    $("#" + id).parentsUntil(".ui-resizable").parent().remove();
 }
 
