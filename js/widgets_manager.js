@@ -58,8 +58,6 @@ function addWidget(widgetType) {
 
     var column_destination = 1; //colonnes 1, 2, ou 3
 
-    console.log("" + $("#column1").children().length + " " + $("#column2").children().length + " " + $("#column3").children().length);
-
     //On prend la colonne avec le moins de widgets
     if($("#column1").children().length > $("#column2").children().length)
         column_destination = 2;
@@ -112,7 +110,8 @@ function addWidget(widgetType) {
 
         case Widgets.MAPS:
             panel_widget.children(".panel-heading").text("Map");
-            panel_widget.children(".widget").attr("id", "maps").append('<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn1D5NzOcdVR1r4PBqLYKJh5Gb6zdb9DA&callback=mapsUpdate"></script>');
+            panel_widget.children(".widget").attr("id", "maps");
+            mapsUpdate();
             break;
     }
 }
