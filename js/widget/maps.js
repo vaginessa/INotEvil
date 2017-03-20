@@ -2,35 +2,41 @@
  * Created by sydpy on 3/14/17.
  */
 
-var map;
+var map = {};
 var geocoder;
 
-function mapsUpdate() {
-    $("#maps").load("js/widget/layout/maps.html", function () {
+function mapsUpdate(id) {
+
+    var maps = $("#maps" + id);
+
+    maps.load("js/widget/layout/maps.html", function () {
         geocoder = new google.maps.Geocoder();
-        initialize();
+        maps.find("button").attr("onclick","newLocation(" + id + ");");
+        maps.find(".map").attr("id","map" + id);
+        initialize(id);
     });
 }
 
-function initialize() {
+function initialize(id) {
 
     var gradignus = new google.maps.LatLng(44.791388, -0.605713);
     var mapOptions = {
         zoom: 10,
         center: gradignus
     };
-    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    map["" + id] = new google.maps.Map(document.getElementById("map" + id), mapOptions);
+    console.log(map);
 }
 
-function newLocation() {
+function newLocation(id) {
 
-    var search = $("#maps-location").val();
+    var search = $("#maps" + id).find(".search:first").val();
 
     geocoder.geocode({'address': search}, function (results, status) {
         if (status == 'OK') {
-            map.setCenter(results[0].geometry.location);
+            map["" + id].setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
-                map: map,
+                map: map["" + id],
                 position: results[0].geometry.location
             });
         } else {

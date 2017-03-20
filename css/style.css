@@ -87,12 +87,8 @@ iframe {
     visibility: hidden;
 }
 
-#maps {
+.map {
     height: 300px;
-}
-
-#map {
-    height: 100%;
 }
 
 /* the 'dropdown' effect for suggestions fits the input width */

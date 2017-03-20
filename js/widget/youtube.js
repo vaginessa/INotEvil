@@ -2,17 +2,19 @@
  * Created by sydpy on 3/13/17.
  */
 
-function youtubeUpdate(){
-    $("#youtube").empty();
-    $("#youtube").load("js/widget/layout/youtube.html");
+function youtubeUpdate(id) {
+    var youtube = $("#youtube" + id);
+    youtube.load("js/widget/layout/youtube.html", function () {
+        youtube.find("button").attr("onclick", "newVideo(" + id + ");");
+    });
 }
 
-function newVideo(){
+function newVideo(id) {
 
-    var search = $("#youtube-video-search").val();
+    var youtube = $("#youtube" + id);
 
-    $("#youtube-video-search").val("");
+    var search = youtube.find(".search:first").val();
 
-    $("#youtube-player")
-        .attr("src","http://www.youtube.com/embed?listType=search&list=" + search);
+    youtube.find(".player")
+        .attr("src", "http://www.youtube.com/embed?listType=search&list=" + search);
 }
