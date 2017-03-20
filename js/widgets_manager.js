@@ -61,7 +61,7 @@ function addWidget(widgetType) {
         $(this).resizable({
             minHeight: 200,
             maxHeight: 500,
-            handles: 's, n',
+            handles: 's',
             containment: "#widgets-container",
             resize: function (event, ui) {
                 var currentHeight = ui.size.height;
@@ -75,7 +75,7 @@ function addWidget(widgetType) {
                 $(this).height(currentHeight);
 
                 // set the content panel width
-                $(this).children(".widget").height(currentHeight - padding);
+                $(this).find(".widget").height(currentHeight - padding);
             }
         });
 
