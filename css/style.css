@@ -21,10 +21,6 @@ iframe {
     width: 100%;
 }
 
-.row {
-    overflow: hidden;
-}
-
 .col_custom {
     /* Columns with same height hack */
     margin-bottom: -99999px;
@@ -49,6 +45,15 @@ iframe {
     margin: 10px;
 }
 
+.widget-create:hover {
+    transform: scale(1.15);
+    -o-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    -moz-transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    margin: 10px;
+}
+
 .col_custom > .panel {
     cursor: move;
     min-height: 200px;
@@ -60,6 +65,7 @@ iframe {
 
 #widgets-container {
     min-height: 300px;
+    overflow: hidden;
 }
 
 /* animation resize */
@@ -91,3 +97,8 @@ iframe {
 
 /* the 'dropdown' effect for suggestions fits the input width */
 .twitter-typeahead, .tt-hint, .tt-input, .tt-menu, .dropdown-menu { width: 100%; }
+
+.dropdown-menu {
+    position: relative;
+    z-index: 10000;
+}

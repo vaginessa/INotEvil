@@ -4,17 +4,20 @@
 
 var api_token = '041cf92994244e7482554634a459deb9';
 
-function footballUpdate() {
+function footballUpdate(widget_id) {
 
-    $("#football").load("js/widget/layout/football.html", function (){
+    var football = $("#football" + widget_id);
 
+    football.load("js/widget/layout/football.html", function (){
 
-        $('#football-search').typeahead({
+        var search_foot = football.find('#football-search');
+
+        search_foot.typeahead({
             source: function (query, process) {
 
                 $.ajax({
                     headers: { 'X-Auth-Token': api_token },
-                    url: 'http://api.football-data.org/v1/teams?name=' + $("#football-search").val(),
+                    url: 'http://api.football-data.org/v1/teams?name=' + search_foot.val(),
                     dataType: 'json',
                     type: 'GET'
                 }).done(function(response) {
@@ -27,30 +30,34 @@ function footballUpdate() {
             autoSelect: true,
             minLength: 3
         });
+
+        football.find(".btn").attr("onclick", "showFixtures(" + widget_id + ");");
     });
 
-    loadFixturesOfTeam(526); //Bordeaux
+    loadFixturesOfTeam(widget_id, 526); //Bordeaux
 }
 
-function showFixtures() {
+function showFixtures(widget_id) {
 
-    $("#fixtures-list").empty();
+    var football = $("#football" + widget_id);
+
+    football.children("#fixtures-list").empty();
 
     $.ajax({
         headers: { 'X-Auth-Token': api_token },
-        url: 'http://api.football-data.org/v1/teams?name=' + $("#football-search").val(),
+        url: 'http://api.football-data.org/v1/teams?name=' + football.find("#football-search").val(),
         dataType: 'json',
         type: 'GET'
     }).done(function(response) {
-        loadFixturesOfTeam(response.teams[0].id);
+        loadFixturesOfTeam(widget_id, response.teams[0].id);
     });
 }
 
-function loadFixturesOfTeam(id) {
+function loadFixturesOfTeam(widget_id, team_id) {
 
     $.ajax({
         headers: { 'X-Auth-Token': api_token },
-        url: 'http://api.football-data.org/v1/teams/' + id + "/fixtures",
+        url: 'http://api.football-data.org/v1/teams/' + team_id + "/fixtures",
         dataType: 'json',
         type: 'GET'
     }).done(function(response) {
@@ -110,7 +117,7 @@ function loadFixturesOfTeam(id) {
 
                     $(this).find("#score").text(fixtures[key].result.goalsHomeTeam + " - " + fixtures[key].result.goalsAwayTeam);
                     $(this).find("#date-fixture").text(fixtures[key].date.split("T")[0]);
-                    $(this).appendTo("#fixtures-list");
+                    $(this).appendTo($("#football"+widget_id).find("#fixtures-list"));
                 }).attr("class", "list-group-item");
 
                 return finished_fixtures_count < 10; //Permet de n'avoir que 10 éléments au maximum

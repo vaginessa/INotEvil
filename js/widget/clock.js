@@ -2,20 +2,22 @@
  * Created by sydpy on 3/13/17.
  */
 
-function clockUpdate() {
+function clockUpdate(id) {
 
-    $("#clock").load("js/widget/layout/clock.html", function () {
+    $("#clock" + id).load("js/widget/layout/clock.html", function () {
         var today = new Date();
 
         var h = checkTime(today.getHours());
         var m = checkTime(today.getMinutes());
         var s = checkTime(today.getSeconds());
 
-        $("#time").text(h + ":" + m + ":" + s);
-        $("#date").text(today.toDateString());
+        $(this).children("#time").text(h + ":" + m + ":" + s);
+        $(this).children("#date").text(today.toDateString());
     });
 
-    setTimeout(clockUpdate, 1000);
+    setTimeout(function(){
+        clockUpdate(id);
+    }, 100);
 }
 
 function checkTime(i) {

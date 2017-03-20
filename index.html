@@ -18,7 +18,7 @@
                     <label for="search_bar">Search on the quantum web :</label>
 
                     <div class="input-group">
-                        <input type="text" class="form-control" id="search_bar" name="q" placeholder="Search quantum things... (Ex: funny cat video who falls into lava)">
+                        <input type="text" class="form-control" id="search_bar" name="q" autocomplete="off" placeholder="Search quantum things... (Ex: funny cat video who falls into lava)">
 
                         <span class="input-group-btn">
                             <button class="btn btn-danger" type="submit"><i class="glyphicon glyphicon-search"></i></button>
@@ -94,6 +94,30 @@
 
         <script>
             $(document).ready(function () {
+
+                //focus search bar & suggestions
+                var search_bar = $("#search_bar");
+                search_bar.focus();
+                search_bar.typeahead({
+                    source: function (query, process) {
+                        $.getJSON("http://suggestqueries.google.com/complete/search?callback=?",
+                            {
+                                "jsonp":"suggestCallBack", // jsonp callback function name
+                                "q":search_bar.val(),
+                                "output":"firefox" //firefox enables json output
+                            }
+                        );
+
+                        suggestCallBack = function (data) {
+                            console.log(data[1]);
+                            process(data[1]);
+                        };
+                    },
+                    autoSelect: true,
+                    minLength: 1
+                });
+
+                //manage widgets
                 manage();
             });
 
