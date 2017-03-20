@@ -66,7 +66,7 @@ function addWidget(widgetType) {
     if ($("#column" + column_destination).children().length > $("#column3").children().length)
         column_destination = 3;
 
-    $("#column" + column_destination).load("js/widget/layout/panel_widget.html", function () {
+    var panel_widget = $("<div></div>").load("js/widget/layout/panel_widget.html", function () {
 
         switch (widgetType) {
             case Widgets.CLOCK:
@@ -112,5 +112,7 @@ function addWidget(widgetType) {
                 break;
         }
     });
+
+    $("#column" + column_destination).append(panel_widget);
 }
 
