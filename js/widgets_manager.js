@@ -31,6 +31,8 @@ function manage() {
         }
     });
 
+    $(".no-selection").disableSelection();
+
     $(".panel-custom").resizable({
         minHeight: 200,
         maxHeight: 500,
