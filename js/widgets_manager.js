@@ -31,8 +31,6 @@ function manage() {
         }
     });
 
-    $(".sortable").disableSelection();
-
     $(".panel-custom").resizable({
         minHeight: 200,
         maxHeight: 500,
@@ -112,7 +110,6 @@ function addWidget(widgetType) {
                 break;
         }
     });
-
     $("#column" + column_destination).append(panel_widget);
 }
 
