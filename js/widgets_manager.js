@@ -24,25 +24,79 @@ var created_widgets_count = {
 
 function manage() {
 
-    $(".sortable").sortable({
-        items: '.panel:not(.unsortable)',
-        handle : '.panel-heading',
-        revert: true,
-        dropOnEmpty: true,
-        connectWith: "div.col_custom",
-        stop: function (event, ui) {
-            var twitter = ui.item.children("[id^=twitter]");
+    if(!localStorage.getItem('first_launch')) {
+        alert('Add widgets and refresh the page to see that great persistence ! ;)');
+        localStorage.setItem('first_launch', 'n');
+    }
 
-            //Si twitter a été trouvé, c'est qu'il a été drag&drop et donc on le reload (pour fix le bug de la page blanche)
-            if (twitter.length > 0) {
-                var id = twitter.attr("id").match(/\d+$/); //get widget id from div id
-                console.log("Reload twitter" + id);
-                reload_twitter(id);
-            }
+    //restaure le widget container comme à sa précédente connexion
+    if(localStorage.getItem('created_widgets_count')) {
+        $("#widgets-container").html(JSON.parse(localStorage.getItem('widgets_storage')));
+        created_widgets_count = JSON.parse(localStorage.getItem('created_widgets_count'));
+        $("div[class^='ui-resizable']").remove(); //fix resize bug when retreiving from localStorage
+
+        //On update tous les widgets (qui ont besoin d'être update) récupérés du localstorage
+        for (var i = 1; i <= created_widgets_count["clock"]; i++) {
+            clockUpdate(i);
         }
-    });
 
-    $(".no-selection").disableSelection();
+        for (var i = 1; i <= created_widgets_count["youtube"]; i++) {
+            youtubeUpdate(i);
+        }
+
+        for (var i = 1; i <= created_widgets_count["twitter"]; i++) {
+            twitterUpdate(i);
+        }
+
+        for (var i = 1; i <= created_widgets_count["football"]; i++) {
+            footballUpdate(i);
+        }
+
+        for (var i = 1; i <= created_widgets_count["maps"]; i++) {
+            mapsUpdate(i);
+        }
+
+        $(".sortable").sortable({
+            items: '.panel:not(.unsortable)',
+            handle : '.panel-heading',
+            revert: true,
+            dropOnEmpty: true,
+            connectWith: "div.col_custom",
+            stop: function (event, ui) {
+                var twitter = ui.item.children("[id^=twitter]");
+
+                //Si twitter a été trouvé, c'est qu'il a été drag&drop et donc on le reload (pour fix le bug de la page blanche)
+                if (twitter.length > 0) {
+                    var id = twitter.attr("id").match(/\d+$/); //get widget id from div id
+                    console.log("Reload twitter" + id);
+                    reload_twitter(id);
+                }
+            }
+        });
+
+        $(".no-selection").disableSelection();
+
+        $(".panel-widget").resizable({
+            minHeight: 200,
+            maxHeight: 500,
+            handles: 's',
+            containment: "#widgets-container",
+            resize: function (event, ui) {
+                var currentHeight = ui.size.height;
+
+                // this accounts for padding in the panels +
+                // borders, you could calculate this using jQuery
+                var padding = 80;
+
+                // this accounts for some lag in the ui.size value, if you take this away
+                // you'll get some instable behaviour
+                $(this).height(currentHeight);
+
+                // set the content panel width
+                $(this).find(".widget").height(currentHeight - padding);
+            }
+        });
+    }
 }
 
 function addWidget(widgetType) {
@@ -66,6 +120,10 @@ function addWidget(widgetType) {
                 $(this).children().children(".widget").attr("id", "clock" + created_widgets_count["clock"]);
                 $(this).find(".reduce").attr("data-target", "#clock" + created_widgets_count["clock"]);
                 clockUpdate(created_widgets_count["clock"]);
+
+                //Exceptionnellement on ne le fait pas dans le fichier js correspondant car le clockUpdate est appelé en boucle récursivement
+                localStorage.setItem('widgets_storage', JSON.stringify($("#widgets-container").html()));
+                localStorage.setItem('created_widgets_count', JSON.stringify(created_widgets_count));
                 break;
 
             case Widgets.WEATHER:
@@ -118,6 +176,7 @@ function addWidget(widgetType) {
 
         }
         $(this).find(".remove").attr("onclick", 'removeWidget("' + $(this).find(".widget").attr("id") + '");');
+
         $(this).resizable({
             minHeight: 200,
             maxHeight: 500,
@@ -137,13 +196,20 @@ function addWidget(widgetType) {
                 // set the content panel width
                 $(this).find(".widget").height(currentHeight - padding);
             }
-        })
+        });
     });
 
+    panel_widget.attr('class', 'panel-widget');
     panel_widget.appendTo("#column" + column_destination);
 }
 
 function removeWidget(id) {
+    console.log("removing : #" + id);
     $("#" + id).parentsUntil(".ui-resizable").parent().remove();
+    saveWidgets();
 }
 
+function saveWidgets() {
+    localStorage.setItem('widgets_storage', JSON.stringify($("#widgets-container").html()));
+    localStorage.setItem('created_widgets_count', JSON.stringify(created_widgets_count));
+}

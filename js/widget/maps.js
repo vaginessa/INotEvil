@@ -14,6 +14,7 @@ function mapsUpdate(id) {
         maps.find("button").attr("onclick","newLocation(" + id + ");");
         maps.find(".map").attr("id","map" + id);
         initialize(id);
+        saveWidgets();
     });
 }
 
@@ -25,7 +26,16 @@ function initialize(id) {
         center: gradignus
     };
     map["" + id] = new google.maps.Map(document.getElementById("map" + id), mapOptions);
-    console.log(map);
+
+    if(localStorage.getItem('location')) {
+        var location = JSON.parse(localStorage.getItem('location'));
+
+        map["" + id].setCenter(location);
+        var marker = new google.maps.Marker({
+            map: map["" + id],
+            position: location
+        });
+    }
 }
 
 function newLocation(id) {
@@ -39,6 +49,8 @@ function newLocation(id) {
                 map: map["" + id],
                 position: results[0].geometry.location
             });
+
+            localStorage.setItem('location', JSON.stringify(results[0].geometry.location));
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
         }

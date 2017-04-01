@@ -7,5 +7,7 @@ function twitterUpdate(id) {
 }
 
 function reload_twitter(id) {
-    $("#twitter" + id).load("js/widget/layout/twitter.html");
+    $("#twitter" + id).load("js/widget/layout/twitter.html", function () {
+        saveWidgets();
+    });
 }

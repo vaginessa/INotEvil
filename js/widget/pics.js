@@ -26,6 +26,7 @@ function jsonFlickrFeed(json) {
         && json.items.length > 0 ){
 
         $("#pics" + last_id_used).find("#image").removeAttr("src").attr("src",json.items[0].media.m);
+        saveWidgets();
 
     } else {
         alert("No picture were found !");

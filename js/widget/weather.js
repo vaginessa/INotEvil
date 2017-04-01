@@ -4,27 +4,32 @@
 
 var cities = [];
 
-function weatherUpdate(id) {
+function weatherUpdate(widget_id) {
 
-    $("#weather" + id).load("js/widget/layout/weather.html", function () {
-        $(this).attr("onclick", "addCity(" + id + ");");
+    $("#weather" + widget_id).load("js/widget/layout/weather.html", function () {
+        $(this).attr("onclick", "addCity(" + widget_id + ");");
     });
 
-    loadCityInfos(id, "Bordeaux");
+//    if(localStorage.getItem('cities_weather' + widget_id))
+//        cities = localStorage.getItem('cities_weather' + widget_id);
+
+//    else
+    loadCityInfos(widget_id, "Bordeaux");
 }
 
-function addCity(id) {
+function addCity(widget_id) {
 
-    var weather = $("#weather" + id);
+    var weather = $("#weather" + widget_id);
     var city = weather.find("#weather-city-search").val();
     weather.find("#weather-city-search").val("");
 
-    loadCityInfos(id, city);
+    loadCityInfos(widget_id, city);
+    //localStorage.setItem('cities_weather' + widget_id, cities);
 }
 
-function loadCityInfos(id, city) {
+function loadCityInfos(widget_id, city) {
 
-    var weather = $("#weather" + id);
+    var weather = $("#weather" + widget_id);
 
     $.getJSON("http://api.openweathermap.org/data/2.5/weather?appid=9b45f2f2f37d5dbbf9b99aefc602204f&units=metric&q=" + city, function (result) {
 
@@ -45,6 +50,7 @@ function loadCityInfos(id, city) {
                 weather.find("#weather-icon").attr("id", "weather-icon" + cities.length).attr("src", imageUrl);
                 weather.find("#city").attr("id", "city" + cities.length).text(city + ", " + country);
                 weather.find("#temp").attr("id", "temp" + cities.length).text(temp + "°C");
+                saveWidgets();
             }).attr("class", "list-group-item");
 
             item.appendTo(weather.find("#city-list"));

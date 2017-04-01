@@ -32,9 +32,12 @@ function footballUpdate(widget_id) {
         });
 
         football.find(".btn").attr("onclick", "showFixtures(" + widget_id + ");");
-    });
 
-    loadFixturesOfTeam(widget_id, 526); //Bordeaux
+        if(localStorage.getItem('current_team_id' + widget_id))
+            loadFixturesOfTeam(widget_id, localStorage.getItem('current_team_id' + widget_id))
+        else
+            loadFixturesOfTeam(widget_id, 526); //Bordeaux
+    });
 }
 
 function showFixtures(widget_id) {
@@ -54,6 +57,8 @@ function showFixtures(widget_id) {
 }
 
 function loadFixturesOfTeam(widget_id, team_id) {
+
+    localStorage.setItem('current_team_id' + widget_id, team_id);
 
     $.ajax({
         headers: { 'X-Auth-Token': api_token },
@@ -91,6 +96,8 @@ function loadFixturesOfTeam(widget_id, team_id) {
                             {
                                 home_img.attr("src", response.crestUrl); //On récupère l'image du club away
                             }
+                        }).done(function () {
+                            saveWidgets();
                         });
                     });
 
@@ -112,6 +119,8 @@ function loadFixturesOfTeam(widget_id, team_id) {
                             {
                                 away_img.attr("src", response.crestUrl); //On récupère l'image du club away
                             }
+                        }).done(function () {
+                            saveWidgets();
                         });
                     });
 
